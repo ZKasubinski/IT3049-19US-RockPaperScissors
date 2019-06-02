@@ -12,59 +12,80 @@ var decision = document.getElementById("decision");
 
 let game;
 
+var round = 0;
+
 class RockPaperScissors
 {
 	constructor()
 	{
 		this.randomNumber = Math.floor((Math.random() * 3) + 0)
-		console.log(this.randomNumber);
 	}
 	
 	whoWon(userVal)
 	{
+		const winnerPar = document.createElement("p");
 		if(userVal === 0)
 		{
 			if(this.randomNumber === 0)
 			{
-				console.log("TIE Rock V Rock");
+				round += 1;
+				winnerPar.innerHTML = '<span>Round ' + round + ': Tie game, ' + name + ' selected: rock, Computer selected: rock</span>'
+				document.body.appendChild(winnerPar);
 			}
 			else if(this.randomNumber === 1)
 			{
-				console.log("BOT WINS Rock V PAPER");
+				round += 1;
+				winnerPar.innerHTML = '<span>Round ' + round + ': Computer wins, ' + name + ' selected: rock, Computer selected: paper</span>'
+				document.body.appendChild(winnerPar);
 			}
 			else if(this.randomNumber === 2)
 			{
-				console.log("PLAYER WINS Rock V SCISSORS");
+				round += 1;
+				winnerPar.innerHTML = '<span>Round ' + round + ': ' + name + ' wins, ' + name + ' selected: rock, Computer selected: scissors</span>'
+				document.body.appendChild(winnerPar);
 			}
 		}
 		else if(userVal === 1)
 		{
 			if(this.randomNumber === 0)
 			{
-				console.log("PLAYER WINS PAPER V Rock");
+				round += 1;
+				winnerPar.innerHTML = '<span>Round ' + round + ': ' + name + ' wins, ' + name + ' selected: paper, Computer selected: rock</span>'
+				document.body.appendChild(winnerPar);
 			}
 			else if(this.randomNumber === 1)
 			{
-				console.log("TIE PAPER V PAPER");
+				round += 1;
+				winnerPar.innerHTML = '<span>Round ' + round + ': Tie game, ' + name + ' selected: paper, Computer selected: paper</span>'
+				document.body.appendChild(winnerPar);
 			}
 			else if(this.randomNumber === 2)
 			{
-				console.log("BOT WINS PAPER V SCISSORS");
+				round += 1;
+				winnerPar.innerHTML = '<span>Round ' + round + ': Computer wins, ' + name + ' selected: paper, Computer selected: scissors</span>'
+				document.body.appendChild(winnerPar);
 			}
 		}
 		else if(userVal === 2)
 		{
 			if(this.randomNumber === 0)
 			{
-				console.log("BOT WINS SCISSORS V Rock");
+				round += 1;
+				winnerPar.innerHTML = '<span>Round ' + round + ': Computer wins, ' + name + ' selected: scissors, Computer selected: rock</span>'
+				document.body.appendChild(winnerPar);
+				
 			}
 			else if(this.randomNumber === 1)
 			{
-				console.log("PLAYER WINS SCISSORS V PAPER");
+				round += 1;
+				winnerPar.innerHTML = '<span>Round ' + round + ': ' + name + ' wins, ' + name + ' selected: scissors, Computer selected: paper</span>'
+				document.body.appendChild(winnerPar);
 			}
 			else if(this.randomNumber === 2)
 			{
-				console.log("TIE SCISSORS V SCISSORS");
+				round += 1;
+				winnerPar.innerHTML = '<span>Round ' + round + ': Tie game, ' + name + ' selected: scissors, Computer selected: scissors</span>'
+				document.body.appendChild(winnerPar);
 			}
 		}
 	}
@@ -88,9 +109,7 @@ enterNameFrm.addEventListener("submit", function(ev)
 enterChoiceFrm.addEventListener("submit", function(ev)
 {
 	ev.preventDefault();
-	console.log("TEST");
 	game = new RockPaperScissors();
 	var rockPaperOrScissors = parseInt(decision.options[decision.selectedIndex].value);
-	console.log(rockPaperOrScissors);
 	game.whoWon(rockPaperOrScissors);
 });
